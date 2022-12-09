@@ -1,36 +1,59 @@
-package com.venturagroup.test.domain.entities;
+package com.venturagroup.test.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@Entity
-@Table(name = "equipos")
-public class Equipo {
+public class EquipoDto implements Serializable {
 
-  @Id
+  @NotNull(message = "El id no puede ser nulo")
   private Integer id;
+
+  @NotNull(message = "El código mantenimiento no puede ser nulo")
   private String codigo_mantenimiento;
+
+  @NotNull(message = "El nombre no puede ser nulo")
   private String nombre;
+
   private Timestamp fecha_ingreso;
   private Date fecha_regreso_operacion;
   private Date ultima_fecha_mantenimiento;
+
+  @NotNull(message = "El tipo de equipo no puede ser nulo")
   private Integer id_tipo_equipo;
+
+  @NotNull(message = "El estado de equipo no puede ser nulo")
   private Integer id_estado_equipo;
+
+  @NotNull(message = "El estado de equipo no puede ser nulo")
   private String id_empresa;
+
+  @NotNull(message = "El estado no puede ser nulo")
   private String estado;
+
+  @NotNull(message = "La capacidad no puede ser nulo")
   private String capacidad;
+
+  @NotNull(message = "La marca no puede ser nulo")
   private String marca;
+
+  @NotNull(message = "El modelo no puede ser nulo")
   private String modelo;
+
+  @NotNull(message = "El serial no puede ser nulo")
   private String serial;
+
+  @NotNull(message = "El id pertinencia no puede ser nulo")
   private Integer id_pertinencia_equipos;
+
+  @NotNull(message = "El id centro costo no puede ser nulo")
   private String id_centro_costos;
+
+  @NotNull(message = "El id clasificacion no puede ser nulo")
   private String id_clasificacion_equipos;
 
-
-  public Equipo() {
+  public EquipoDto() {
   }
 
   public Integer getId() {
@@ -62,7 +85,8 @@ public class Equipo {
   }
 
   public void setFecha_ingreso(Timestamp fecha_ingreso) {
-    this.fecha_ingreso = fecha_ingreso;
+    Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+    this.fecha_ingreso = timestamp;
   }
 
   public Date getFecha_regreso_operacion() {
